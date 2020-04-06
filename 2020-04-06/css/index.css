@@ -1,0 +1,30 @@
+.container {
+	padding: 0;
+}
+.productBox {
+    margin: 10px auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+.productBox h5{
+    color: cadetblue;
+}
+.productBox p{
+    font-size: 15px;
+    color: brown;
+}
+.productBox .card {
+	margin-right: 1%;
+	margin-bottom: 10px;
+	width: 19.2%;
+}
+
+.productBox .card:nth-child(5n+5) {
+	margin-right: 0;
+}
+
+.productBox .card .card-title {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
