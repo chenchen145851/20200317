@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var str = 'zf2019px2020';
+        var reg = /\d+/g;
+        // console.log(reg.exec(str)[0]);
+        // console.log(reg.exec(str)[0]);
+        // 封装一个execAll  
+
+        RegExp.prototype.execAll = function (str) {
+            let arr = [];
+            let _this = this;
+            if (_this.global == false) {
+                _this = eval(_this + 'g')
+            }
+            res = _this.exec(str);
+            while (res) {
+                arr.push(res[0]);
+                res = this.exec(str);
+            }
+            return arr;
+        }
+        console.log(reg.execAll(str)); // ['2019','2020']
+    </script>
+</body>
+
+</html>
