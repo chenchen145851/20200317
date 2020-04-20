@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html,
+    body {
+        transition: top 1s ease-in-out,opacity 2s ease-out;
+        height: 500%;
+        background: -webkit-linear-gradient(top left, pink, yellow, rosybrown, aquamarine);
+    }
+
+    #GOTO {
+        position: fixed;
+        right: 0;
+        bottom: 100px;
+        width: 80px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+    <button id="GOTO">回到顶部</button>
+</body>
+
+</html>
+<script>
+    window.onscroll = function () {
+        let W = document.documentElement.scrollTop,
+            H = document.documentElement.clientHeight;
+        if (W >= H) {
+            GOTO.style.display = 'block'
+        } else {
+            GOTO.style.display = 'none'
+        }
+    };
+    GOTO.onclick = function () {
+        let Top = document.documentElement.scrollTop;
+        let baby = Math.round(Top / (1000 / 10));
+        let time = setInterval(() => {
+            Top -= baby;
+            if (Top < 0) {
+                Top = 0;
+                clearInterval(time);
+            };
+            document.documentElement.scrollTop = Top;
+        },10);  
+    };
+</script>
