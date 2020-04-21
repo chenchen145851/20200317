@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="序号">
+    <input type="text" placeholder="姓名">
+    <input type="button" value="提交">
+    <ul id="app">
+        <li>
+            序号：<i>1</i>===姓名：<i>珠峰</i>===<button>删除</button>
+        </li>
+    </ul>
+</body>
+<html>
+<script>
+    var ary = [{
+            index: 1,
+            name: "珠峰1"
+        },
+        {
+            index: 2,
+            name: "珠峰2"
+        },
+        {
+            index: 3,
+            name: "珠峰3"
+        },
+        {
+            index: 4,
+            name: "珠峰4"
+        }
+    ];
+    let ul = document.querySelector('#app');
+    let query = function query() {
+        let str = ``;
+        ary.forEach(item => {
+            let {
+                name,
+                index
+            } = item;
+            str += `<li>
+            序号：<i>${index}</i>===${name}：<i>珠峰</i>===<button>删除</button>
+            </li>`;
+        });
+        ul.innerHTML = str;
+    };
+    query();
+    let handle = function handle() {
+        let btns = document.querySelectorAll('button');
+        let lis = ul.querySelectorAll('li');
+        [...btns].forEach((item, index) => {
+            item.onclick = function () {
+                let li = lis[index];
+                ul.removeChild(li);
+            };
+        });
+    };
+    handle();
+    let inp = document.querySelectorAll('input');
+    inp[2].onclick = function () {
+        let i = inp[0].value,
+            name = inp[1].value;
+        ary.push({
+            index: i,
+            name: name
+        });
+        inp[0].value = '';
+        inp[1].value = '';
+        query();
+    };
+</script>

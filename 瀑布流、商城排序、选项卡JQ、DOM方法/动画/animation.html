@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../动画/less/animation.css">
+</head>
+
+<body>
+    <div id="box">陈洋洋</div>
+</body>
+
+</html>
+<script>
+    let box = document.querySelector('#box');
+    // let flag = 1;
+    // box.onclick = function () {
+    //     flag == 1 ? this.style.animationPlayState = 'paused' : this.style.animationPlayState = 'running';
+    //     this.style.animationPlayState = flag == 1 ? 'paused' : 'running';
+    //     flag *= -1;
+    // };
+
+    box.onclick = function () {
+        if (getComputedStyle(this).animationPlayState == 'paused') {
+        this.style.animationPlayState = 'running'
+    } else {
+        this.style.animationPlayState = 'paused'
+    }
+    }
+    
+
+
+
+
+
+
+
+    /* 类名操作 */
+    /*  box.onclick = function () {
+         this.classList.toggle('top');
+     }; */
+</script>

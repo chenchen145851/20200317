@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../动画/less/index.css">
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
+<script>
+    let box = document.querySelector('#box');
+
+    function move(ele, attr, duration, target) {
+        let start = parseFloat(getComputedStyle(ele)[attr]);
+        console.log(start);
+    };
+    move(box, 'left', 1000, 500);
+    move(box, 'opacity', 500, 0.5);
+</script>

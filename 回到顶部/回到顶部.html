@@ -9,7 +9,7 @@
 <style>
     html,
     body {
-        transition: top 1s ease-in-out,opacity 2s ease-out;
+        transition: top 1s ease-in-out, opacity 2s ease-out;
         height: 500%;
         background: -webkit-linear-gradient(top left, pink, yellow, rosybrown, aquamarine);
     }
@@ -36,13 +36,15 @@
     window.onscroll = function () {
         let W = document.documentElement.scrollTop,
             H = document.documentElement.clientHeight;
-        if (W >= H) {
+        if (W > H) {
             GOTO.style.display = 'block'
         } else {
             GOTO.style.display = 'none'
         }
     };
     GOTO.onclick = function () {
+        if (this.isRunning) return;
+        this.isRunning = true;
         let Top = document.documentElement.scrollTop;
         let baby = Math.round(Top / (1000 / 10));
         let time = setInterval(() => {
@@ -50,8 +52,9 @@
             if (Top < 0) {
                 Top = 0;
                 clearInterval(time);
+                this.isRunning = false;
             };
             document.documentElement.scrollTop = Top;
-        },10);  
+        }, 10);
     };
 </script>

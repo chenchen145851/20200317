@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            animation: turnRound 1s linear infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
+<script>
+    function fadeIn(ele, time = 1000) {
+        if (ele.isShowing) return;
+        ele.isShowing = true;
+        let opa = 0;
+        let step = (10000 - 0) / (time / 10);
+        let timer = setInterval(() => {
+            opa += step;
+            if (opa > 10000) {
+                opa = 10000;
+                clearInterval(timer);
+                ele.isShowing = false;
+            }
+            ele.style.opacity = opa / 10000;
+        }, 10);
+
+    }
+    box.onclick = function () {
+        fadeIn(this);
+    };
+</script>

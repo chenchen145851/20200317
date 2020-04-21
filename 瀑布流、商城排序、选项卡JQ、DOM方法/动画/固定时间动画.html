@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../动画/less/index.css">
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
+<script>
+    let box = document.querySelector('#box');
+    let left = 0;
+    let max = document.documentElement.clientWidth - box.offsetWidth;
+    box.onclick = function () {
+        let step = max / (1000 / 10);
+        let timer = setInterval(() => {
+            left += step;
+            if (left > max) {
+                left = max;
+                clearInterval(timer);
+            };
+            this.style.left = left + 'px';
+        }, 10);
+    };
+</script>

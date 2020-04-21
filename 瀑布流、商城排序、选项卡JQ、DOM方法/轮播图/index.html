@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../轮播图/less/1.css">
+</head>
+
+<body>
+    <div id="box">
+        <ul class='list'>
+            <!-- ul 是一个长条 -->
+            <li>
+                <img src="https://cms-bucket.ws.126.net/2020/0227/f8e3f9e3j00q6cu9c0062c000go006yc.jpg" alt="">
+            </li>
+            <li>
+                <img src="https://cms-bucket.ws.126.net/2020/0306/9084f041j00q6rqcl00l2c000go006yc.jpg" alt="">
+            </li>
+            <li>
+                <img src="https://cms-bucket.ws.126.net/2020/0227/e986cfd0j00q6cu4v001hc000go006yc.jpg" alt="">
+            </li>
+            <li>
+                <img src="https://cms-bucket.ws.126.net/2020/0218/2f1f019fj00q5w7pw008sc000go006yc.jpg" alt="">
+            </li>
+            <li>
+                <img src="http://cms-bucket.ws.126.net/2020/0421/e93e2200p00q94okl00mpc000s600e3c.png" alt="">
+            </li>
+            <li>
+                <img src="https://cms-bucket.ws.126.net/2020/0227/f8e3f9e3j00q6cu9c0062c000go006yc.jpg" alt="">
+            </li>
+        </ul>
+        <div class="btn_box">
+            <div class="left_btn">
+                < </div> <div class="right_btn"> >
+            </div>
+        </div>
+        <div id="small_Box">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+</body>
+
+</html>
+<script>
+    let box = document.querySelector('#box');
+    let ul = document.querySelector('ul');
+    let left_btn = document.querySelector('.left_btn');
+    let right_btn = document.querySelector('.right_btn');
+    let start = 0;
+    let timer = null;
+    ul.style.transform = `translateX(${start}px)`;
+
+    function move() {
+        start -= 600;
+        // let smart = parseFloat(getComputedStyle(ul).left);
+        // ul.style.left = smart - 600 + 'px';
+        if (start < -3000) {
+            start = 0;
+            ul.style.transition = 'none';
+            ul.style.transform = `translateX(${start}px)`;
+            let l = ul.offsetHeight;
+            start = -600;
+            ul.style.transition = 'all 0.3s';
+        } else {
+            ul.style.transition = 'all 0.3s';
+        }
+        ul.style.transform = `translateX(${start}px)`;
+
+    };
+    move();
+
+    function quiet() {
+        timer = setInterval(() => {
+            move();
+        }, 1000);
+        box.onmouseenter = function () {
+            clearInterval(timer);
+        };
+        box.onmouseleave = function () {
+            move();
+        };
+    };
+    quiet();
+
+    function Btn() {
+        left_btn.onclick = function () {
+            status += 600;
+            if (status > 0) {
+                status = -3000;
+                ul.style.transition = 'none';
+                ul.style.transform = `translateX(${status}px)`;
+                let l = ul.offsetHeight;
+                status += 600;
+                ul.style.transition = 'all .3s ease';
+            } else {
+                ul.style.transition = 'all .3s ease';
+            };
+            ul.style.transform = `translateX(${status}px)`;
+        };
+    };
+    right_btn.onclick = function () {
+        move();
+    };
+    Btn();
+</script>
